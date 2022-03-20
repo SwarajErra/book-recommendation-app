@@ -71,7 +71,7 @@ class _searchBarState extends State<searchBar> {
 
 class dynamicJobCard extends StatefulWidget {
   final TextEditingController searchTextFieldController =
-      TextEditingController()..text = 'Book';
+      TextEditingController()..text = '';
 
   @override
   _dynamicJobCardState createState() => _dynamicJobCardState();
@@ -81,6 +81,7 @@ class _dynamicJobCardState extends State<dynamicJobCard> {
   Map<String, dynamic>? userMap;
   bool pressAttention = false;
   var list = [];
+  var listBackup = [];
   double? _ratingValue;
   final dynamic ImageList = [
     'Assets/images/IMG1.jpg',
@@ -99,7 +100,7 @@ class _dynamicJobCardState extends State<dynamicJobCard> {
     print(text);
     setState(() {
       var tempList = [];
-      tempList = list
+      tempList = listBackup
           .where((user) => user?["bookTitle"]
               ?.toLowerCase()
               .contains(text?.toLowerCase()))
@@ -124,6 +125,7 @@ class _dynamicJobCardState extends State<dynamicJobCard> {
         setState(() {
           for (var i = 0; i < value.docs.length; i++) {
             list.add(value.docs[i].data());
+            listBackup.add(value.docs[i].data());
           }
         });
       }
@@ -328,7 +330,7 @@ class _dynamicJobCardState extends State<dynamicJobCard> {
               onChanged: (text) {
                 if (widget.searchTextFieldController.text == '') {
                   list = [];
-                  onSearch();
+                  // onSearch();
                 }
               },
               controller: widget.searchTextFieldController,
@@ -343,9 +345,7 @@ class _dynamicJobCardState extends State<dynamicJobCard> {
                       color: Colors.grey,
                       onPressed: () {
                         if (widget.searchTextFieldController.text != '') {
-                          // updateList(widget.searchTextFieldController.text);
-                        } else {
-                          onSearch();
+                          updateList(widget.searchTextFieldController.text);
                         }
                       })),
               style: TextStyle(color: Colors.black, fontSize: 20.0),
