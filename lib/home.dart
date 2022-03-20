@@ -99,14 +99,20 @@ class _dynamicJobCardState extends State<dynamicJobCard> {
   updateList(text) {
     print(text);
     setState(() {
-      var tempList = [];
-      tempList = listBackup
-          .where((user) => user?["bookTitle"]
-              ?.toLowerCase()
-              .contains(text?.toLowerCase()))
-          .toList();
+      if(text != ''){
+        var tempList = [];
+        tempList = listBackup
+            .where((user) => user?["bookTitle"]
+            ?.toLowerCase()
+            .contains(text?.toLowerCase()))
+            .toList();
 
-      list = tempList;
+        list = tempList;
+
+      }else{
+        list = listBackup;
+      }
+
       print(list);
     });
   }
@@ -329,8 +335,7 @@ class _dynamicJobCardState extends State<dynamicJobCard> {
             TextField(
               onChanged: (text) {
                 if (widget.searchTextFieldController.text == '') {
-                  list = [];
-                  // onSearch();
+                  updateList(widget.searchTextFieldController.text);
                 }
               },
               controller: widget.searchTextFieldController,
