@@ -45,7 +45,7 @@ class _searchBarState extends State<searchBar> {
     return Stack(
       children: <Widget>[
         Positioned.fill(
-          top: 20,
+          top: 0,
           child: Align(
             alignment: Alignment.center,
             child: Column(
@@ -329,7 +329,7 @@ class _dynamicJobCardState extends State<dynamicJobCard> {
   Widget build(BuildContext context) {
     return Container(
         width: double.infinity,
-        margin: const EdgeInsets.only(top: 100.0),
+        margin: const EdgeInsets.only(top: 2),
         child: Column(
           children: [
             TextField(
