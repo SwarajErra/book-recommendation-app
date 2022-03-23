@@ -1,5 +1,5 @@
 import 'package:flutter/material.dart';
-import 'package:flutter_auth_ui/constants.dart';
+import 'package:book_recommendation_app/constants.dart';
 
 class UnderPart extends StatelessWidget {
   const UnderPart(
