@@ -233,7 +233,9 @@ class _dynamicJobCardState extends State<dynamicJobCard> {
                                     direction: Axis.horizontal,
                                     allowHalfRating: true,
                                     itemCount: 5,
+
                                     ratingWidget: RatingWidget(
+
                                         full: const Icon(Icons.star,
                                             color: Colors.orange),
                                         half: const Icon(
