@@ -22,7 +22,7 @@ class AboutUs extends StatelessWidget {
               children: [
                 Image.asset("Assets/images/blurb_logo.png" ,width: 100,),
                 SizedBox(height: 50,),
-                Text("Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum."  , textAlign: TextAlign.center, style: TextStyle(fontSize: 18),),
+                Text("The Blurb is the largest platform which suggests the best books to users basd on the their intrests. Taking advantage of vast collection across the internet,we suggest the best and fine books with small cover details about the book.We also offer editor recommendations and customer reviews on hundreds of thousands of titles."  , textAlign: TextAlign.center, style: TextStyle(fontSize: 18),),
                 SizedBox(height: 40,),
                 Text('Connect With Us' , style: TextStyle(fontSize: 20 , fontWeight: FontWeight.bold),),
                 Row(
