@@ -85,7 +85,9 @@ print(" IAM GET ALL BOOKS");
         tempList = listBackup
             .where((user) => user["bookTitle"]
             ?.toLowerCase()
-            .startsWith(text?.toLowerCase()))
+            .startsWith(text?.toLowerCase()) || user["bookTitle"]
+            ?.toLowerCase()
+            .contains(text?.toLowerCase()))
             .toList();
 
         booksData = tempList;
@@ -598,6 +600,34 @@ Widget CustomBookTile(String Title, String subtitle, double Rating,
                     share(Title, subtitle);
                   },
                 ),
+                ElevatedButton.icon(
+                  label: Text('Delete',
+                      style: GoogleFonts.pacifico(
+                          textStyle: TextStyle(
+                            fontSize: 12,
+                          ))),
+                  icon: Icon(Icons.delete_forever),
+                  style: ButtonStyle(
+                    backgroundColor:
+                    MaterialStateProperty.all(Colors.lightBlue),
+
+                  ),
+
+                  onPressed: () async {
+                    await FirebaseFirestore.instance
+                        .collection("books-list")
+                        .doc(booksData["bookId"])
+                        .delete()
+                        .then((value) {
+                      Navigator.pushReplacement(
+                          context,
+                          MaterialPageRoute(
+                              builder: (context) => Home(
+                                emailID: UserData["email"],
+                              )));
+                    });
+                  },
+                )
               ],
             ),
           ),
